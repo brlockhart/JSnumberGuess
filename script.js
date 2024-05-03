@@ -11,7 +11,7 @@
 // console.log(document.querySelector('.guess').value);
 // console.log(guessConst);
 
-const randomNumber = Math.trunc(Math.random() * 20);
+let randomNumber = Math.trunc(Math.random() * 20) + 1;
 let score = 20;
 
 document.querySelector('.check').addEventListener('click', function () {
@@ -19,7 +19,7 @@ document.querySelector('.check').addEventListener('click', function () {
   console.log(guessOutput);
   //when there is no input
   if (!guessOutput) {
-    document.querySelector('.message').textContent = 'Please enter a number';
+    document.querySelector('.message').textContent = 'Start guessing...';
     //when the correct number is guessed
   } else if (guessOutput === randomNumber) {
     document.querySelector('.number').textContent = randomNumber;
@@ -49,8 +49,21 @@ document.querySelector('.check').addEventListener('click', function () {
   }
 });
 /*
+//trying to change the color of all paragraphs to orange. a loop is needed for this
 const pOrange = (document.querySelectorAll('p').style.color = 'orange');
 array.forEach(function (pOrange) {
   console.log(pOrange);
 });
 */
+//functionality for "again" button
+document.querySelector('.again').addEventListener('click', function () {
+  score = 20;
+  randomNumber = Math.trunc(Math.random() * 20) + 1;
+  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('.score').textContent = score;
+  document.querySelector('.number').textContent = '?';
+  document.querySelector('.guess').value = '';
+  document.querySelector('body').style.backgroundColor = '#222';
+  document.querySelector('.number').style.width = '15rem';
+  //location.reload();
+});
