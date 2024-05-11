@@ -20,7 +20,8 @@ document.querySelector('.check').addEventListener('click', function () {
   console.log(guessOutput);
   //when there is no input
   if (!guessOutput) {
-    document.querySelector('.message').textContent = 'Start guessing...';
+    document.querySelector('.message').textContent =
+      'You must enter a number...';
     //when the correct number is guessed
   } else if (guessOutput === randomNumber) {
     document.querySelector('.number').textContent = randomNumber;
@@ -31,28 +32,40 @@ document.querySelector('.check').addEventListener('click', function () {
       highScore = score;
       document.querySelector('.highscore').textContent = highScore;
     }
-    //when the guess is too high
-  } else if (guessOutput > randomNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Too High';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'Game Over!';
-      document.querySelector('.score').textContent = 0;
-    }
-    //when the guess is too low
-  } else if (guessOutput < randomNumber) {
-    if (score > 1) {
-      document.querySelector('.message').textContent = 'Too Low';
-      score--;
-      document.querySelector('.score').textContent = score;
-    } else {
-      document.querySelector('.message').textContent = 'Game Over!';
-      document.querySelector('.score').textContent = 0;
-    }
+  }
+  //reducing repeated code
+  else if (guessOutput !== randomNumber) {
+    document.querySelector('.message').textContent =
+      guessOutput > randomNumber ? 'Too High' : 'Too Low';
+    score--;
+    document.querySelector('.score').textContent = score;
+  } else {
+    document.querySelector('.message').textContent = 'Game Over!';
+    document.querySelector('.score').textContent = 0;
   }
 });
+//when the guess is too high
+//   } else if (guessOutput > randomNumber) {
+//     if (score > 1) {
+//       document.querySelector('.message').textContent = 'Too High';
+//       score--;
+//       document.querySelector('.score').textContent = score;
+//     } else {
+//       document.querySelector('.message').textContent = 'Game Over!';
+//       document.querySelector('.score').textContent = 0;
+//     }
+//     //when the guess is too low
+//   } else if (guessOutput < randomNumber) {
+//     if (score > 1) {
+//       document.querySelector('.message').textContent = 'Too Low';
+//       score--;
+//       document.querySelector('.score').textContent = score;
+//     } else {
+//       document.querySelector('.message').textContent = 'Game Over!';
+//       document.querySelector('.score').textContent = 0;
+//     }
+//   }
+//});
 /*
 //trying to change the color of all paragraphs to orange. a loop is needed for this
 const pOrange = (document.querySelectorAll('p').style.color = 'orange');
