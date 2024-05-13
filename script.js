@@ -16,7 +16,7 @@ document.querySelector('.check').addEventListener('click', function () {
     //when there is no input
     if (!guessOutput) {
         displayMessage('You must enter a number...');
-        //when the correct number is guessed
+    //when the correct number is guessed
     } else if (guessOutput === randomNumber) {
         document.querySelector('.number').textContent = randomNumber;
         displayMessage('Correct!')
@@ -27,7 +27,7 @@ document.querySelector('.check').addEventListener('click', function () {
             document.querySelector('.highscore').textContent = highScore;
         }
     }
-    //reducing repeated code
+    //when the wrong number is guessed
     else if (guessOutput !== randomNumber) {
         if (score > 1) {
             displayMessage(guessOutput > randomNumber ? 'Too High' : 'Too Low');
